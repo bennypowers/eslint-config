@@ -1,0 +1,37 @@
+{
+  "name": "@power-elements/eslint-config",
+  "version": "0.0.1",
+  "description": "JavaScript Code Standards",
+  "author": "Benny Powers <web@bennypowers.com>",
+  "license": "MIT",
+  "main": "index.cjs.js",
+  "module": "index.js",
+  "keywords": [
+    "eslint"
+  ],
+  "scripts": {
+    "prepare": "npx rollup --input index.js --output.file index.cjs.js --output.format cjs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bennypowers/eslint-config.git"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.com"
+  },
+  "peerDependencies": {
+    "eslint": ">= 6"
+  },
+  "dependencies": {
+    "eslint-config-google": "^0.14",
+    "eslint-plugin-html": "^6",
+    "eslint-plugin-jsdoc": "^21",
+    "eslint-plugin-json": "^2",
+    "eslint-plugin-no-loops": "^0",
+    "eslint-plugin-no-only-tests": "^2"
+  },
+  "devDependencies": {
+    "eslint": "^6.8.0"
+  }
+}
