@@ -1,5 +1,5 @@
 {
-  "name": "@power-elements/eslint-config",
+  "name": "@pwrs/eslint-config",
   "version": "0.0.1",
   "description": "JavaScript Code Standards",
   "author": "Benny Powers <web@bennypowers.com>",
@@ -15,10 +15,6 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/bennypowers/eslint-config.git"
-  },
-  "publishConfig": {
-    "access": "public",
-    "registry": "https://registry.npmjs.com"
   },
   "peerDependencies": {
     "eslint": ">= 6"
