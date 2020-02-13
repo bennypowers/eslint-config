@@ -8,6 +8,13 @@ const NEVER = 'never';
 const IGNORE = 'ignore';
 /* eslint-enable no-unused-vars */
 
+const NODE_FILES = [
+  'rollup.config.js',
+  'karma.conf.js',
+  '.babelrc.js',
+  'workbox-config.js',
+];
+
 export default {
   extends: ['eslint:recommended', 'google'],
   env: { browser: true, es6: true },
@@ -94,7 +101,7 @@ export default {
       'valid-jsdoc': 0
     }
   }, {
-    files: ['rollup.config.js', 'karma.conf.js', '.babelrc.js'],
+    files: NODE_FILES,
     env: { node: true },
   }],
 };
