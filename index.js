@@ -93,5 +93,8 @@ export default {
     rules: {
       'valid-jsdoc': 0
     }
+  }, {
+    files: ['rollup.config.js', 'karma.conf.js', '.babelrc.js'],
+    env: { node: true },
   }],
 };
