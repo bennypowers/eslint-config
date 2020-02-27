@@ -61,7 +61,7 @@ export default {
     'new-cap': OFF,
     'no-console': ERROR,
     'no-extend-native': ERROR,
-    'no-loops/no-loops': WARN,
+    'no-loops/no-loops': WARNING,
     'no-only-tests/no-only-tests': ERROR,
     'no-var': ERROR,
     'object-curly-spacing': [ERROR, ALWAYS],
