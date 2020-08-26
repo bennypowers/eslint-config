@@ -1,0 +1,1 @@
+Special JavaScript and TypeScript code standards for special people.
