@@ -10,21 +10,18 @@ const IGNORE  = 'ignore';
 
 /** These files run in a nodejs context, mostly config files */
 const NODE_FILES = [
-  'rollup.config.js',
-  'karma.conf.js',
   '.babelrc.js',
-  'workbox-config.js',
-  'postcss.config.js',
-  'web-test-runner.config.js',
-  'web-test-runner.config.mjs',
+  'commitlint.config.?([cm])js',
+  'karma.conf.?([cm])js',
+  'postcss.config.?([cm])js',
+  'rollup.config.?([cm])js',
+  'web-*.config.?([cm])js',
+  'workbox-config.?([cm])js',
 ];
 
 /** These files contain mocha tests */
 const TEST_FILES = [
-  '**/*.test.js',
-  '**/*.spec.js',
-  '**/*.test.ts',
-  '**/*.spec.ts',
+  '**/*.@(test,spec).[jt]s',
 ]
 
 export default {
