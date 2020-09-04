@@ -1,6 +1,6 @@
 {
   "name": "@pwrs/eslint-config",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "JavaScript Code Standards",
   "author": "Benny Powers <web@bennypowers.com>",
   "license": "MIT",
