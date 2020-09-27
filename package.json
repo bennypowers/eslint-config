@@ -29,5 +29,8 @@
     "eslint-plugin-jsdoc": "^30.2.4",
     "eslint-plugin-json": "^2.1.2",
     "eslint-plugin-no-only-tests": "^2.4.0"
+  },
+  "devDependencies": {
+    "typescript": "^4.0.3"
   }
 }

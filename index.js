@@ -1,3 +1,4 @@
+// @ts-check
 const OFF     = 'off';
 const WARNING = 'warn';
 const ERROR   = 'error';
@@ -24,7 +25,8 @@ const TEST_FILES = [
   '**/*.@(test,spec).[jt]s',
 ]
 
-export default {
+/** @type{import('eslint').Linter.Config} */
+const config = {
   extends: [
     'eslint:recommended',
     'google'
@@ -93,6 +95,7 @@ export default {
 
     'new-cap': OFF,
 
+    'no-unused-vars': [ERROR, { ignoreRestSiblings: true }],
     'no-var': ERROR,
     'no-console': ERROR,
     'no-extend-native': ERROR,
@@ -159,3 +162,5 @@ export default {
     }
   }],
 };
+
+export default config;
