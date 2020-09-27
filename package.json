@@ -10,7 +10,7 @@
     "eslint"
   ],
   "scripts": {
-    "prepare": "npx rollup --input index.js --output.file index.cjs.js --output.format cjs"
+    "prepare": "npx rollup --input index.js --output.exports 'auto' --output.file index.cjs.js --output.format cjs"
   },
   "repository": {
     "type": "git",
@@ -22,14 +22,12 @@
   "dependencies": {
     "@typescript-eslint/eslint-plugin": "^3.10.1",
     "@typescript-eslint/parser": "^3.10.1",
+    "eslint": "^7.7.0",
     "eslint-config-google": "^0.14.0",
+    "eslint-plugin-easy-loops": "^1.0.0",
     "eslint-plugin-html": "^6.0.3",
     "eslint-plugin-jsdoc": "^30.2.4",
     "eslint-plugin-json": "^2.1.2",
-    "eslint-plugin-no-loops": "^0.3.0",
     "eslint-plugin-no-only-tests": "^2.4.0"
-  },
-  "devDependencies": {
-    "eslint": "^7.7.0"
   }
 }

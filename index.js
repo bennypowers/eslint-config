@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars, no-multi-spaces */
 const OFF     = 'off';
 const WARNING = 'warn';
 const ERROR   = 'error';
@@ -10,6 +9,7 @@ const IGNORE  = 'ignore';
 
 /** These files run in a nodejs context, mostly config files */
 const NODE_FILES = [
+  '*.cjs.js',
   '.babelrc.js',
   'commitlint.config.?([cm])js',
   'karma.conf.?([cm])js',
@@ -44,7 +44,7 @@ export default {
     'html',
     'no-only-tests',
     'json',
-    'no-loops',
+    'easy-loops',
   ],
 
   rules: {
@@ -71,9 +71,9 @@ export default {
       ignoredNodes: [
         'ConditionalExpression',
         'TaggedTemplateExpression[tag.name="html"] > TemplateLiteral CallExpression > ObjectExpression',
-        'TaggedTemplateExpression[tag.name="html"] > TemplateLiteral > ObjectExpression',
+        'TaggedTemplateExpression[tag.name="html"] > TemplateLiteral ObjectExpression',
         'TaggedTemplateExpression[tag.name="html"] > TemplateLiteral CallExpression > TaggedTemplateLiteral',
-        'TaggedTemplateExpression[tag.name="html"] > TemplateLiteral > ArrowFunctionExpression > BlockStatement'
+        'TaggedTemplateExpression[tag.name="html"] > TemplateLiteral ArrowFunctionExpression > BlockStatement'
       ],
     }],
 
@@ -92,7 +92,7 @@ export default {
     'no-console': ERROR,
     'no-extend-native': ERROR,
 
-    'no-loops/no-loops': WARNING,
+    'easy-loops/easy-loops': WARNING,
 
     'no-only-tests/no-only-tests': ERROR,
 
