@@ -35,6 +35,11 @@ export default {
     es6: true
   },
 
+  globals: {
+    Polymer: true,
+    System: true,
+  },
+
   parserOptions: {
     ecmaVersion: 2018,
     sourceType: 'module'
