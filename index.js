@@ -23,18 +23,19 @@ const NODE_FILES = [
 /** These files contain mocha tests */
 const TEST_FILES = [
   '**/*.@(test,spec).[jt]s',
-]
+];
 
 /** @type{import('eslint').Linter.Config} */
 const config = {
   extends: [
+    'google',
     'eslint:recommended',
-    'google'
+    'plugin:lit-a11y/recommended',
   ],
 
   env: {
     browser: true,
-    es6: true
+    es6: true,
   },
 
   globals: {
@@ -44,7 +45,7 @@ const config = {
 
   parserOptions: {
     ecmaVersion: 2018,
-    sourceType: 'module'
+    sourceType: 'module',
   },
 
   plugins: [
@@ -52,11 +53,12 @@ const config = {
     'no-only-tests',
     'json',
     'easy-loops',
+    'lit-a11y',
   ],
 
   rules: {
     'arrow-parens': [ERROR, 'as-needed'],
-    'brace-style': [ERROR, "1tbs", { allowSingleLine: true }],
+    'brace-style': [ERROR, '1tbs', { allowSingleLine: true }],
     'block-spacing': [ERROR, ALWAYS],
 
     'comma-dangle': [ERROR, {
@@ -76,21 +78,22 @@ const config = {
       flatTernaryExpressions: true,
       SwitchCase: 1,
       ignoredNodes: [
-        'ConditionalExpression',
-        'TaggedTemplateExpression[tag.name="html"] > TemplateLiteral CallExpression > ObjectExpression',
-        'TaggedTemplateExpression[tag.name="html"] > TemplateLiteral ObjectExpression',
-        'TaggedTemplateExpression[tag.name="html"] > TemplateLiteral CallExpression > TaggedTemplateLiteral',
-        'TaggedTemplateExpression[tag.name="html"] > TemplateLiteral ArrowFunctionExpression > BlockStatement'
+        `ConditionalExpression`,
+        `TaggedTemplateExpression[tag.name="html"] > TemplateLiteral CallExpression > ObjectExpression`,
+        `TaggedTemplateExpression[tag.name="html"] > TemplateLiteral ObjectExpression`,
+        `TaggedTemplateExpression[tag.name="html"] > TemplateLiteral CallExpression > TaggedTemplateLiteral`,
+        `TaggedTemplateExpression[tag.name="html"] > TemplateLiteral ArrowFunctionExpression > BlockStatement`,
       ],
     }],
 
     'linebreak-style': [ERROR, 'unix'],
     'lines-between-class-members': [ERROR, ALWAYS],
+
     'max-len': [ERROR, 100, {
       ignoreComments: true,
       ignoreTemplateLiterals: true,
-      ignorePattern: "^import (type )?\\{? ?\\w+ ?\\}? from '(.*)';$",
-      ignoreUrls: true
+      ignorePattern: '^import (type )?\\{? ?\\w+ ?\\}? from \'(.*)\';$',
+      ignoreUrls: true,
     }],
 
     'new-cap': OFF,
@@ -106,7 +109,7 @@ const config = {
 
     'object-curly-spacing': [ERROR, ALWAYS],
 
-    'operator-linebreak': [ERROR, "after", { "overrides": { "?": "after", ":": "before" } }],
+    'operator-linebreak': [ERROR, 'after', { 'overrides': { '?': 'after', ':': 'before' } }],
 
     'prefer-const': ERROR,
     'prefer-destructuring': ERROR,
@@ -136,30 +139,33 @@ const config = {
     },
   }, {
     files: ['**/*.ts'],
-    parser: "@typescript-eslint/parser",
-    plugins: ["@typescript-eslint"],
+    parser: '@typescript-eslint/parser',
+    plugins: ['@typescript-eslint'],
     extends: [
       'plugin:@typescript-eslint/eslint-recommended',
-      'plugin:@typescript-eslint/recommended'
+      'plugin:@typescript-eslint/recommended',
     ],
     rules: {
       'valid-jsdoc': OFF,
       '@typescript-eslint/no-explicit-any': [WARNING, {
-        ignoreRestArgs: true
+        ignoreRestArgs: true,
+      }],
+      '@typescript-eslint/no-unused-vars': [ERROR, {
+        ignoreRestArgs: true,
       }],
       '@typescript-eslint/ban-ts-comment': [WARNING, {
-        'ts-expect-error': "allow-with-description"
-      }]
-    }
+        'ts-expect-error': 'allow-with-description',
+      }],
+    },
   }, {
     files: NODE_FILES,
     env: { node: true },
   }, {
-    files: [ '*.mjs' ],
+    files: ['*.mjs'],
     parserOptions: {
       ecmaVersion: 2020,
-      sourceType: 'module'
-    }
+      sourceType: 'module',
+    },
   }],
 };
 
