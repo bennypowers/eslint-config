@@ -25,6 +25,12 @@ const TEST_FILES = [
   '**/*.@(test,spec).[jt]s',
 ];
 
+/** Packages which re-export lit-html */
+const litHtmlSources = [
+  '@apollo-elements/lit-apollo',
+  '@open-wc/testing'
+];
+
 /** @type{import('eslint').Linter.Config} */
 const config = {
   extends: [
@@ -36,6 +42,10 @@ const config = {
   env: {
     browser: true,
     es6: true,
+  },
+
+  settings: {
+    litHtmlSources
   },
 
   globals: {
