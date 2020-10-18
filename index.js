@@ -161,7 +161,7 @@ const config = {
         ignoreRestArgs: true,
       }],
       '@typescript-eslint/no-unused-vars': [ERROR, {
-        ignoreRestArgs: true,
+        ignoreRestSiblings: true,
       }],
       '@typescript-eslint/ban-ts-comment': [WARNING, {
         'ts-expect-error': 'allow-with-description',
