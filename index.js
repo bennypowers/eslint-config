@@ -28,7 +28,7 @@ const TEST_FILES = [
 /** Packages which re-export lit-html */
 const litHtmlSources = [
   '@apollo-elements/lit-apollo',
-  '@open-wc/testing'
+  '@open-wc/testing',
 ];
 
 /** @type{import('eslint').Linter.Config} */
@@ -45,7 +45,7 @@ const config = {
   },
 
   settings: {
-    litHtmlSources
+    litHtmlSources,
   },
 
   globals: {
@@ -108,7 +108,7 @@ const config = {
 
     'new-cap': OFF,
 
-    'no-unused-vars': [ERROR, { ignoreRestSiblings: true }],
+    'no-unused-vars': [WARNING, { ignoreRestSiblings: true }],
     'no-var': ERROR,
     'no-console': ERROR,
     'no-extend-native': ERROR,
@@ -160,7 +160,7 @@ const config = {
       '@typescript-eslint/no-explicit-any': [WARNING, {
         ignoreRestArgs: true,
       }],
-      '@typescript-eslint/no-unused-vars': [ERROR, {
+      '@typescript-eslint/no-unused-vars': [WARNING, {
         ignoreRestSiblings: true,
       }],
       '@typescript-eslint/ban-ts-comment': [WARNING, {
