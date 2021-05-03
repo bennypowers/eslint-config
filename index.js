@@ -97,7 +97,7 @@ const config = {
     }],
 
     'linebreak-style': [ERROR, 'unix'],
-    'lines-between-class-members': [ERROR, ALWAYS],
+    'lines-between-class-members': [ERROR, ALWAYS, { exceptAfterSingleLine: true }],
 
     'max-len': [ERROR, 100, {
       ignoreComments: true,
