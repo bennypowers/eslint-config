@@ -10,27 +10,28 @@
     "eslint"
   ],
   "scripts": {
-    "prepare": "npx rollup --input index.js --output.exports 'auto' --output.file index.cjs.js --output.format cjs"
+    "prepare": "esbuild index.js --outfile=index.cjs.js --format=cjs"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/bennypowers/eslint-config.git"
   },
   "peerDependencies": {
-    "eslint": "^7.30.0"
+    "eslint": "^7.32.0"
   },
   "dependencies": {
-    "@typescript-eslint/eslint-plugin": "^4.28.3",
-    "@typescript-eslint/parser": "^4.28.3",
+    "@typescript-eslint/eslint-plugin": "^5.0.0",
+    "@typescript-eslint/parser": "^5.0.0",
     "eslint-config-google": "^0.14.0",
     "eslint-plugin-easy-loops": "^1.0.1",
-    "eslint-plugin-html": "^6.1.2",
-    "eslint-plugin-jsdoc": "^35.4.3",
-    "eslint-plugin-json": "^3.0.0",
+    "eslint-plugin-html": "^6.2.0",
+    "eslint-plugin-jsdoc": "^36.1.1",
+    "eslint-plugin-json": "^3.1.0",
     "eslint-plugin-lit-a11y": "^1.0.1",
     "eslint-plugin-no-only-tests": "^2.6.0"
   },
   "devDependencies": {
-    "typescript": "^4.3.5"
+    "esbuild": "0.13.5",
+    "typescript": "^4.4.4"
   }
 }
