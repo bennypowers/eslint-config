@@ -10,7 +10,7 @@
     "eslint"
   ],
   "scripts": {
-    "prepare": "esbuild index.js --outfile=index.cjs.js --format=cjs"
+    "prepare": "esbuild index.js --outfile=index.cjs.js --format=cjs && echo 'module.exports = config' >> index.cjs.js"
   },
   "repository": {
     "type": "git",
