@@ -17,7 +17,7 @@
     "url": "git+https://github.com/bennypowers/eslint-config.git"
   },
   "peerDependencies": {
-    "eslint": "^7.32.0"
+    "eslint": "^7.32.0 || ^8"
   },
   "dependencies": {
     "@typescript-eslint/eslint-plugin": "^5.0.0",
