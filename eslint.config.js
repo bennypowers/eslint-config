@@ -1,12 +1,17 @@
 // @ts-check
 import js from '@eslint/js';
-import google from 'eslint-config-google';
+import { createRequire } from 'node:module';
 import html from 'eslint-plugin-html';
 import jsonc from 'eslint-plugin-jsonc';
 import litA11y from 'eslint-plugin-lit-a11y';
 import noOnlyTests from 'eslint-plugin-no-only-tests';
+import stylistic from '@stylistic/eslint-plugin';
 import globals from 'globals';
 import tseslint from 'typescript-eslint';
+
+const require = createRequire(import.meta.url);
+/** Rule data derived from eslint-config-google, translated for @stylistic. */
+const googleRules = require('./google-rules.json');
 
 const OFF = 'off';
 const WARNING = 'warn';
@@ -15,6 +20,20 @@ const ERROR = 'error';
 const ALWAYS = 'always';
 const NEVER = 'never';
 const IGNORE = 'ignore';
+
+
+/**
+ * ESLint deprecated its formatting rules in 8.53 and will remove them in 11.
+ * Route every rule that `@stylistic/eslint-plugin` implements through that
+ * plugin, and leave everything else on the ESLint core rule of the same name.
+ */
+function withStylistic(rules) {
+  return Object.fromEntries(
+    Object.entries(rules).map(([name, value]) => {
+      return stylistic.rules[name] ? [`@stylistic/${name}`, value] : [name, value];
+    }),
+  );
+}
 
 /** These files run in a nodejs context, mostly config files */
 const NODE_FILES = [
@@ -76,7 +95,7 @@ export default [
     ],
   },
   js.configs.recommended,
-  withoutRemovedRules({ rules: google.rules }),
+  withoutRemovedRules({ rules: googleRules }),
   withoutRemovedRules(litA11y.configs.recommended),
   ...jsonc.configs['flat/recommended-with-jsonc'],
   ...tsRecommended,
@@ -95,11 +114,12 @@ export default [
     },
 
     plugins: {
+      '@stylistic': stylistic,
       html,
       'no-only-tests': noOnlyTests,
     },
 
-    rules: {
+    rules: withStylistic({
       'arrow-parens': [ERROR, 'as-needed'],
       'brace-style': [ERROR, '1tbs', { allowSingleLine: true }],
       'block-spacing': [ERROR, ALWAYS],
@@ -146,9 +166,22 @@ export default [
       'no-console': ERROR,
       'no-extend-native': ERROR,
 
+      // Replaces the deprecated object-curly-spacing and array-bracket-spacing
+      // rules. Line-break enforcement is disabled for brackets and imports so
+      // wrapped lists stay allowed, matching the previous rules.
+      '@stylistic/list-style': [ERROR, {
+        singleLine: { spacing: NEVER },
+        overrides: {
+          '{}': { singleLine: { spacing: ALWAYS } },
+          '[]': OFF,
+          '()': OFF,
+          'ImportDeclaration': OFF,
+          'ImportAttributes': OFF,
+        },
+      }],
+
       'no-only-tests/no-only-tests': ERROR,
 
-      'object-curly-spacing': [ERROR, ALWAYS],
 
       'operator-linebreak': [ERROR, 'after', { overrides: { '?': 'after', ':': 'before' } }],
 
@@ -170,7 +203,7 @@ export default [
 
       'template-tag-spacing': ERROR,
       'template-curly-spacing': ERROR,
-    },
+    }),
   },
   {
     files: TEST_FILES,
@@ -181,7 +214,7 @@ export default [
       },
     },
     rules: {
-      'max-len': OFF,
+      '@stylistic/max-len': OFF,
       'no-invalid-this': OFF,
       'no-console': OFF,
     },
@@ -190,7 +223,7 @@ export default [
     files: ['**/*.json', '**/*.jsonc', '**/*.json5'],
     rules: {
       // Line length and formatting rules do not apply to data files.
-      'max-len': OFF,
+      '@stylistic/max-len': OFF,
     },
   },
   {
